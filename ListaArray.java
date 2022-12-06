@@ -1,8 +1,20 @@
 public class ListaArray implements EstruturaDeDados{
+    private int[] elementos;
+    private int indice;
+
+    public ListaArray(){
+        this.elementos = new int[1000];
+        this.indice = 0;
+
+    } 
 
     @Override
     public boolean insert(int chave) {
-        // TODO Auto-generated method stub
+        if (indice < elementos.length){
+            elementos[indice] = chave;
+            indice +=1;
+            return true;
+            }
         return false;
     }
 
@@ -14,7 +26,11 @@ public class ListaArray implements EstruturaDeDados{
 
     @Override
     public boolean search(int chave) {
-        // TODO Auto-generated method stub
+        for (int i = 0; i < indice; i++){
+            if (elementos[i] == chave){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -41,8 +57,10 @@ public class ListaArray implements EstruturaDeDados{
         // TODO Auto-generated method stub
         return 0;
     }
-
+  
     public static void main(String[] args) {
         ListaArray r = new ListaArray();
+        r.insert(1);
+        System.out.println(r.elementos[0]);
     }
 }
