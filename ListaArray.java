@@ -20,7 +20,17 @@ public class ListaArray implements EstruturaDeDados{
 
     @Override
     public boolean delete(int chave) {
-        // TODO Auto-generated method stub
+        if (search(chave) == true){
+            for (int i = 0; i < indice; i ++){
+                if (elementos[i] == chave){
+                    elementos[i] = 0;
+                    for (int j = i; j < indice; j++){
+                        elementos[j] = elementos[j+1];
+                    }
+                }
+            }
+            return true;
+        }
         return false;
     }
 
@@ -48,19 +58,40 @@ public class ListaArray implements EstruturaDeDados{
 
     @Override
     public int sucessor(int chave) {
-        // TODO Auto-generated method stub
+        for (int i = 0; i < indice; i++){
+            if (elementos[i] == chave){
+                return elementos[i+1];
+            }
+        }
         return 0;
     }
 
     @Override
     public int prodessor(int chave) {
-        // TODO Auto-generated method stub
+        for (int i = 0; i < indice; i++){
+            if (elementos[i] == chave){
+                return elementos[i-1];
+            }
+        }
         return 0;
     }
   
     public static void main(String[] args) {
         ListaArray r = new ListaArray();
+        r.insert(100);
+        r.insert(25);
         r.insert(1);
+        r.insert(60);
         System.out.println(r.elementos[0]);
+        System.out.println(r.elementos[1]);
+        System.out.println(r.elementos[2]);
+        System.out.println(r.elementos[3]);
+        System.out.println(r.search(100));
+        System.out.println(r.delete(100));
+        System.out.println(r.search(100));
+        System.out.println(r.elementos[0]);
+        System.out.println(r.elementos[1]);
+        System.out.println(r.elementos[2]);
+        System.out.println(r.elementos[3]);
     }
 }
